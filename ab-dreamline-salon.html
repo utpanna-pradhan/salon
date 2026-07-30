@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AB Dreamline Salon — Bridal Atelier, Bargarh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="container">
+    <nav>
+      <a href="#top" class="logo">AB <em>Dreamline</em></a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#bridal">Bridal</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#experts">Artists</a>
+        <a href="#membership">Membership</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a href="#book" class="btn btn-solid" id="navBookBtn">Book Appointment</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#services">Services</a>
+      <a href="#bridal">Bridal</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#experts">Artists</a>
+      <a href="#membership">Membership</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <p class="eyebrow">Bandutikra Chowk · Bargarh, Odisha</p>
+    <h1>Your wedding morning,<br><i>rehearsed</i> to perfection.</h1>
+    <p class="sub">AB Dreamline is a bridal atelier where hair, skin and makeup are planned months in advance and executed like a live production — so the one morning that can't be redone, isn't left to chance.</p>
+    <div class="hero-ctas">
+      <a href="#book" class="btn btn-solid">Book Appointment</a>
+      <a href="#bridal" class="btn btn-gold">Reserve Bridal Consultation</a>
+      <a href="https://wa.me/910000000000" target="_blank" class="btn btn-ghost">WhatsApp Us</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="num">4.9★</div><div class="label">Google rating</div></div>
+      <div class="stat"><div class="num">240+</div><div class="label">Verified reviews</div></div>
+      <div class="stat"><div class="num">Est. atelier</div><div class="label">Bargarh's bridal studio</div></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><div class="line"></div></div>
+</section>
+
+<section class="band" id="services">
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow">The Menu</p>
+      <h2>Every service, priced and timed<br>like an appointment you can plan around.</h2>
+      <p>No guessing at the chair. Each treatment lists its duration and starting price up front.</p>
+    </div>
+  </div>
+  <div class="services-grid" id="servicesGrid"></div>
+</section>
+
+<section class="journey band ivory" id="bridal">
+  <div class="container">
+    <div class="sec-head center">
+      <p class="eyebrow" style="justify-content:center;">The Bridal Journey</p>
+      <h2>Seven stages, one wedding day.</h2>
+      <p>Every AB Dreamline bride moves through the same choreographed sequence — starting weeks before the mandap, ending days after.</p>
+    </div>
+    <div class="journey-wrap">
+      <svg class="ribbon-svg" id="ribbonSvg" viewBox="0 0 2 1000" preserveAspectRatio="none">
+        <path d="M1,0 L1,1000"></path>
+      </svg>
+      <div id="journeySteps"></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="container">
+    <div class="sec-head center">
+      <p class="eyebrow" style="justify-content:center;">See The Difference</p>
+      <h2>Drag to compare.</h2>
+    </div>
+    <div class="ba-wrap">
+      <div class="ba-slider" id="baSlider">
+        <div class="ba-side ba-before" id="baBefore"><span>Before</span></div>
+        <div class="ba-side ba-after" id="baAfter"><span>After — AB Dreamline</span></div>
+        <div class="ba-handle" id="baHandle"></div>
+      </div>
+      <div class="ba-tabs" id="baTabs"></div>
+    </div>
+  </div>
+</section>
+
+<section class="band ivory" id="gallery">
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow">Portfolio</p>
+      <h2>Recent work from the chair.</h2>
+    </div>
+    <div class="portfolio-tabs" id="portTabs"></div>
+    <div class="masonry" id="masonryGrid"></div>
+  </div>
+</section>
+
+<section class="band" id="experts">
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow">The Artists</p>
+      <h2>Meet the people behind the chair.</h2>
+    </div>
+    <div class="experts-grid" id="expertsGrid"></div>
+  </div>
+</section>
+
+<section class="band black">
+  <div class="container">
+    <div class="sec-head center">
+      <p class="eyebrow" style="justify-content:center;">In Their Words</p>
+      <h2>What Bargarh's brides are saying.</h2>
+    </div>
+    <div class="reviews-window">
+      <div class="reviews-track" id="reviewsTrack"></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="membership">
+  <div class="container">
+    <div class="sec-head center">
+      <p class="eyebrow" style="justify-content:center;">Membership</p>
+      <h2>For clients who visit often.</h2>
+    </div>
+    <div class="tiers" id="tiersGrid"></div>
+  </div>
+</section>
+
+<section class="band ivory">
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow">Why AB Dreamline</p>
+      <h2>What the price actually buys.</h2>
+    </div>
+    <div class="why-grid" id="whyGrid"></div>
+  </div>
+</section>
+
+<section class="band" id="book">
+  <div class="container">
+    <div class="sec-head center">
+      <p class="eyebrow" style="justify-content:center;">Book A Visit</p>
+      <h2>Four steps to your appointment.</h2>
+    </div>
+    <div class="booking-panel">
+      <div class="book-steps" id="bookSteps"></div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:18px;">Prefer to talk first?</p>
+        <h3 style="font-size:28px;margin-bottom:14px;">Send us your date on WhatsApp — we'll confirm your slot within the hour.</h3>
+        <p style="color:var(--ink);font-size:14px;margin-bottom:28px;">For bridal bookings, consultations are recommended at least 6–8 weeks before the wedding date.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="https://wa.me/910000000000" target="_blank" class="btn btn-solid">WhatsApp Now</a>
+          <a href="tel:+910000000000" class="btn btn-ghost">Call Salon</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <h3>AB <em style="font-style:italic;color:var(--champagne);">Dreamline</em></h3>
+        <p>Bandutikra Chowk, Bargarh, Odisha<br>A bridal and beauty atelier bringing premium hair, skin and makeup craft to Bargarh.</p>
+      </div>
+      <div class="foot-col">
+        <div class="col-title">Explore</div>
+        <a href="#services">Services</a>
+        <a href="#bridal">Bridal Journey</a>
+        <a href="#gallery">Portfolio</a>
+        <a href="#membership">Membership</a>
+      </div>
+      <div class="foot-col">
+        <div class="col-title">Visit</div>
+        <a href="#">Bandutikra Chowk, Bargarh, Odisha</a>
+        <a href="#">Tue – Sun · 10:00 – 20:00</a>
+        <a href="#">Closed Mondays</a>
+      </div>
+      <div class="foot-col">
+        <div class="col-title">Connect</div>
+        <a href="tel:+910000000000">+91 00000 00000</a>
+        <a href="https://wa.me/910000000000">WhatsApp</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 AB Dreamline Salon, Bargarh</span>
+      <span>Design demo — content &amp; photography placeholders</span>
+    </div>
+  </div>
+</footer>
+
+<div class="float-actions">
+  <a href="https://wa.me/910000000000" target="_blank" class="fab" title="WhatsApp">✆</a>
+</div>
+<div class="sticky-book">
+  <span>AB Dreamline Salon</span>
+  <a href="#book" class="btn btn-solid" style="padding:10px 18px;">Book</a>
+</div>
+
+<script src="./script.js">
+
+</script>
+</body>
+</html>
