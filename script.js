@@ -23,10 +23,10 @@ const journey = [
 ];
 
 const baSets = [
-  {label:'Hair Colour', img:IMG('1605980766335-d3a41c7332a1',1400)},
-  {label:'Bridal Makeup', img:IMG('1631549424057-403e75d68e2f',1400)},
-  {label:'Skin & Glow', img:IMG('1616394584738-fc6e612e71b9',1400)},
-  {label:'Nail Art', img:IMG('1632345031435-8727f6897d53',1400)},
+  {label:'Hair Colour', before:IMG('1522337360788-8b13dee7a37e',1400), after:IMG('1605980766335-d3a41c7332a1',1400)},
+  {label:'Bridal Makeup', before:IMG('1610173827043-9db50e0d8ef9',1400), after:IMG('1631549424057-403e75d68e2f',1400)},
+  {label:'Skin & Glow', before:IMG('1731514771613-991a02407132',1400), after:IMG('1616394584738-fc6e612e71b9',1400)},
+  {label:'Nail Art', before:IMG('1571290274554-6a2eaa771e5f',1400), after:IMG('1632345031435-8727f6897d53',1400)},
 ];
 
 const portfolioCats = ['All','Bridal','Hair','Skin','Nails'];
@@ -74,13 +74,6 @@ const whyItems = [
   {t:'Personal Consultation',d:'Every bridal booking starts with a proper sit-down, not a walk-in.'},
 ];
 
-const bookSteps = [
-  {t:'Choose your service',d:'Hair, skin, nails or a full bridal package.'},
-  {t:'Pick your artist',d:'Request a specific stylist or let us assign the best fit.'},
-  {t:'Select date & time',d:'Weekday slots open up faster than weekends.'},
-  {t:'Confirm on WhatsApp',d:'We confirm within the hour and send prep instructions.'},
-];
-
 // ---------- Render ----------
 const el = (sel) => document.querySelector(sel);
 
@@ -115,9 +108,11 @@ el('#journeySteps').innerHTML = journey.map((j,i) => `
 el('#baTabs').innerHTML = baSets.map((b,i)=>`<div class="ba-tab ${i===0?'active':''}" data-i="${i}">${b.label}</div>`).join('');
 function setBaSet(i){
   document.querySelectorAll('.ba-tab').forEach((t,idx)=>t.classList.toggle('active', idx===i));
-  const url = `url('${baSets[i].img}')`;
-  el('#baAfter').style.backgroundImage = url;
-  el('#baBefore').style.backgroundImage = url;
+  const set = baSets[i];
+  el('#baBefore').src = set.before;
+  el('#baAfter').src = set.after;
+  el('#baBefore').alt = `${set.label} before AB Dreamline treatment`;
+  el('#baAfter').alt = `${set.label} after AB Dreamline treatment`;
 }
 el('#baTabs').addEventListener('click', e=>{
   const t = e.target.closest('.ba-tab'); if(!t) return;
@@ -129,10 +124,10 @@ el('#portTabs').innerHTML = portfolioCats.map((c,i)=>`<button class="${i===0?'ac
 function renderMasonry(cat){
   const items = cat==='All' ? portfolioItems : portfolioItems.filter(p=>p.cat===cat);
   el('#masonryGrid').innerHTML = items.map(p=>`
-    <div class="tile" style="height:${p.h}px;">
+    <article class="gallery-page">
       <img src="${p.img}" alt="${p.label}" loading="lazy">
-      <span>${p.label}</span>
-    </div>
+      <div><span>${p.cat}</span><h3>${p.label}</h3></div>
+    </article>
   `).join('');
 }
 el('#portTabs').addEventListener('click', e=>{
@@ -181,12 +176,14 @@ el('#whyGrid').innerHTML = whyItems.map((w,i)=>`
   </div>
 `).join('');
 
-el('#bookSteps').innerHTML = bookSteps.map((b,i)=>`
-  <div class="book-step">
-    <div class="bs-num">${i+1}</div>
-    <div><h4>${b.t}</h4><p>${b.d}</p></div>
-  </div>
-`).join('');
+const bookingDate = el('#bookingDate');
+bookingDate.min = new Date().toISOString().split('T')[0];
+el('#bookingForm').addEventListener('submit', event => {
+  event.preventDefault();
+  const booking = new FormData(event.currentTarget);
+  const message = `Hello AB Dreamline, I would like to request an appointment.%0A%0AService: ${booking.get('service')}%0AArtist: ${booking.get('artist')}%0ADate: ${booking.get('date')}%0ATime: ${booking.get('time')}`;
+  window.open(`https://wa.me/910000000000?text=${message}`, '_blank', 'noopener');
+});
 
 // ---------- Interactions ----------
 // Header scroll state
@@ -210,24 +207,6 @@ mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=>{
 
 // Hero image load-in
 requestAnimationFrame(()=> requestAnimationFrame(()=> document.querySelector('.hero').classList.add('loaded')));
-
-// Before/After drag slider
-const baSlider = el('#baSlider'), baAfterEl = el('#baAfter'), baHandle = el('#baHandle');
-let dragging = false;
-function setBaPos(clientX){
-  const rect = baSlider.getBoundingClientRect();
-  let pct = ((clientX - rect.left) / rect.width) * 100;
-  pct = Math.max(4, Math.min(96, pct));
-  baAfterEl.style.clipPath = `inset(0 0 0 ${pct}%)`;
-  baHandle.style.left = pct+'%';
-}
-baSlider.addEventListener('mousedown', e=>{ dragging=true; setBaPos(e.clientX); });
-window.addEventListener('mousemove', e=>{ if(dragging) setBaPos(e.clientX); });
-window.addEventListener('mouseup', ()=> dragging=false);
-baSlider.addEventListener('touchstart', e=>{ dragging=true; setBaPos(e.touches[0].clientX); });
-baSlider.addEventListener('touchmove', e=>{ if(dragging) setBaPos(e.touches[0].clientX); });
-window.addEventListener('touchend', ()=> dragging=false);
-setBaPos(baSlider.getBoundingClientRect().left + baSlider.getBoundingClientRect().width/2);
 
 // Scroll reveal (IntersectionObserver)
 const revealObserver = new IntersectionObserver((entries)=>{
