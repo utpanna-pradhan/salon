@@ -105,13 +105,18 @@
     <div class="container">
       <div class="sec-head center">
         <p class="eyebrow" style="justify-content:center;">See The Difference</p>
-        <h2>Drag to compare.</h2>
+        <h2>Compare side by side.</h2>
       </div>
       <div class="ba-wrap">
-        <div class="ba-slider" id="baSlider">
-          <div class="ba-side ba-before" id="baBefore"><span>Before</span></div>
-          <div class="ba-side ba-after" id="baAfter"><span>After — AB Dreamline</span></div>
-          <div class="ba-handle" id="baHandle"></div>
+        <div class="ba-comparison" aria-live="polite">
+          <figure class="ba-side ba-before">
+            <img id="baBefore" alt="Before AB Dreamline treatment">
+            <figcaption>Before</figcaption>
+          </figure>
+          <figure class="ba-side ba-after">
+            <img id="baAfter" alt="After AB Dreamline treatment">
+            <figcaption>After — AB Dreamline</figcaption>
+          </figure>
         </div>
         <div class="ba-tabs" id="baTabs"></div>
       </div>
